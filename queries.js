@@ -35,11 +35,31 @@ const connect = async () => {
     process.exit();
 };
 
+
+const updateTodo = async () => {
+    const id = '6799fd2dd8af979ea2228dab';
+    const updatedTodo = await Todo.findByIdAndUpdate(
+      id,
+      { isComplete: true },
+      { new: true }
+    );
+    console.log("Updated todo:", updatedTodo);
+  };
+
+
+const deleteTodo = async () => {
+    const id = '679e62490d9d5304761a9d89';
+    const removedTodo = await Todo.findByIdAndDelete(id);
+    console.log('Removed todo:', removedTodo)
+  }
+
 const runQueries = async () => {
   console.log('Queries running.');
     await findTodos();
     // await createTodo();
-    await findTodo()
+    // await findTodo();
+    // await updateTodo();
+    await deleteTodo();
 };
 
 connect()
